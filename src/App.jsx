@@ -96,7 +96,56 @@ const BarChartCard = () => (
     </ResponsiveContainer>
   </NeumorphicCard>
 );
+const DashboardPage = () => (
+  <div>
+    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
+    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 32}}>
+      {summaryData.map((item, idx) => (
+        <NeumorphicCard key={idx} className="w-64">
+          <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>{item.title}</div>
+          <div style={{fontSize: 24, fontWeight: 'bold', color: '#111'}}>{item.value}</div>
+        </NeumorphicCard>
+      ))}
+    </div>
+    <BarChartCard />
+    <PieChartCard />
+  </div>
+);
+import { PieChart, Pie, Cell } from 'recharts';
 
+// Dados mock para o gráfico de pizza
+const expensesByCategoryData = [
+  { name: 'Moradia', value: 1200 },
+  { name: 'Alimentação', value: 800 },
+  { name: 'Transporte', value: 400 },
+  { name: 'Lazer', value: 300 },
+  { name: 'Saúde', value: 200 },
+];
+
+const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#0088fe'];
+
+const PieChartCard = () => (
+  <NeumorphicCard className="w-full mt-8">
+    <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>Despesas por Categoria</div>
+    <PieChart width={400} height={250}>
+      <Pie
+        data={expensesByCategoryData}
+        cx={200}
+        cy={120}
+        innerRadius={60}
+        outerRadius={100}
+        fill="#8884d8"
+        paddingAngle={5}
+        dataKey="value"
+        label
+      >
+        {expensesByCategoryData.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        ))}
+      </Pie>
+    </PieChart>
+  </NeumorphicCard>
+);
 // Adicione outros componentes de página conforme for evoluindo!
 
 export default function App() {
