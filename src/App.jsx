@@ -49,21 +49,44 @@ const NeumorphicInput = ({ placeholder, type = 'text', value, onChange, name }) 
     </div>
 );
 
+// --- Componente NeumorphicSelect ---
+const NeumorphicSelect = ({ children, value, onChange, name, className = '' }) => (
+    <div className={`${neumorphicElementBg} ${neumorphicShadowOut} rounded-lg relative w-full ${className}`}>
+        <select
+            value={value}
+            onChange={onChange}
+            name={name}
+            className={`w-full appearance-none bg-transparent ${neumorphicElementBg} font-bold text-gray-700 dark:text-gray-300 p-3 rounded-lg focus:outline-none`}
+        >
+            {children}
+        </select>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+            ▼
+        </div>
+    </div>
+);
+
 export default function App() {
   const [inputValue, setInputValue] = useState('');
+  const [selectValue, setSelectValue] = useState('opcao1');
 
   return (
     <div>
       <GlobalStyles />
-      <h1 style={{color: 'white'}}>Testando NeumorphicInput</h1>
+      <h1 style={{color: 'white'}}>Testando NeumorphicSelect</h1>
       <NeumorphicCard>
         <NeumorphicInput
           placeholder="Digite algo..."
           value={inputValue}
           onChange={e => setInputValue(e.target.value)}
         />
-        <NeumorphicButton onClick={() => alert(inputValue)}>
-          Mostrar valor digitado
+        <NeumorphicSelect value={selectValue} onChange={e => setSelectValue(e.target.value)}>
+          <option value="opcao1">Opção 1</option>
+          <option value="opcao2">Opção 2</option>
+          <option value="opcao3">Opção 3</option>
+        </NeumorphicSelect>
+        <NeumorphicButton onClick={() => alert(`Input: ${inputValue} | Select: ${selectValue}`)}>
+          Mostrar valores
         </NeumorphicButton>
       </NeumorphicCard>
     </div>
