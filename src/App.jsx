@@ -97,20 +97,6 @@ const BarChartCard = () => (
   </NeumorphicCard>
 );
 
-const DashboardPage = () => (
-  <div>
-    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
-    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 32}}>
-      {summaryData.map((item, idx) => (
-        <NeumorphicCard key={idx} className="w-64">
-          <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>{item.title}</div>
-          <div style={{fontSize: 24, fontWeight: 'bold', color: '#111'}}>{item.value}</div>
-        </NeumorphicCard>
-      ))}
-    </div>
-    <BarChartCard />
-  </div>
-);
 // Adicione outros componentes de página conforme for evoluindo!
 
 export default function App() {
