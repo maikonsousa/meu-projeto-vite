@@ -42,13 +42,39 @@ const Sidebar = ({ activePage, setActivePage }) => {
   );
 };
 
+// --- Conteúdo de cada página ---
+const DashboardPage = () => (
+  <div>
+    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
+    <p style={{color: 'white'}}>Aqui você verá os gráficos e resumos financeiros.</p>
+  </div>
+);
+
+const TransacoesPage = () => (
+  <div>
+    <h2 style={{color: 'white'}}>Página de Transações</h2>
+    <p style={{color: 'white'}}>Aqui você verá suas transações.</p>
+  </div>
+);
+
+// Adicione outros componentes de página conforme for evoluindo!
+
 export default function App() {
   const [activePage, setActivePage] = useState('Painel');
+
+  const renderPage = () => {
+    switch(activePage) {
+      case 'Painel': return <DashboardPage />;
+      case 'Transacoes': return <TransacoesPage />;
+      default: return <DashboardPage />;
+    }
+  };
+
   return (
     <div className={`flex h-screen font-sans ${neumorphicBaseBg}`}>
       <Sidebar activePage={activePage} setActivePage={setActivePage} />
       <main className="flex-1 p-4">
-        <h1 style={{color: 'white'}}>Página ativa: {activePage}</h1>
+        {renderPage()}
       </main>
     </div>
   );
