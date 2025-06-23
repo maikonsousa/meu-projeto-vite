@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from 'recharts';
 
 // --- Estilos Neumórficos e Globais ---
 const neumorphicBaseBg = "bg-gray-200 dark:bg-gray-900";
@@ -42,7 +43,7 @@ const Sidebar = ({ activePage, setActivePage }) => {
   );
 };
 
-// --- Conteúdo de cada página ---
+// --- Cards de Resumo ---
 const summaryData = [
   { title: 'Saldo do Mês', value: 'R$ 2.500,00' },
   { title: 'Receitas do Mês', value: 'R$ 6.000,00' },
@@ -56,22 +57,7 @@ const NeumorphicCard = ({ children, className = '' }) => (
   </div>
 );
 
-const DashboardPage = () => (
-  <div>
-    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
-    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 32}}>
-      {summaryData.map((item, idx) => (
-        <NeumorphicCard key={idx} className="w-64">
-          <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>{item.title}</div>
-          <div style={{fontSize: 24, fontWeight: 'bold', color: '#111'}}>{item.value}</div>
-        </NeumorphicCard>
-      ))}
-    </div>
-  </div>
-);
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-
-// Dados mock para o gráfico
+// --- Gráfico de Barras ---
 const revenueVsExpensesData = [
   { name: 'Jan', receitas: 3000, despesas: 2000 },
   { name: 'Fev', receitas: 3200, despesas: 2100 },
@@ -97,9 +83,7 @@ const BarChartCard = () => (
   </NeumorphicCard>
 );
 
-import { PieChart, Pie, Cell } from 'recharts';
-
-// Dados mock para o gráfico de pizza
+// --- Gráfico de Pizza ---
 const expensesByCategoryData = [
   { name: 'Moradia', value: 1200 },
   { name: 'Alimentação', value: 800 },
@@ -132,7 +116,31 @@ const PieChartCard = () => (
     </PieChart>
   </NeumorphicCard>
 );
-// Adicione outros componentes de página conforme for evoluindo!
+
+// --- DashboardPage ---
+const DashboardPage = () => (
+  <div>
+    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
+    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 32}}>
+      {summaryData.map((item, idx) => (
+        <NeumorphicCard key={idx} className="w-64">
+          <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>{item.title}</div>
+          <div style={{fontSize: 24, fontWeight: 'bold', color: '#111'}}>{item.value}</div>
+        </NeumorphicCard>
+      ))}
+    </div>
+    <BarChartCard />
+    <PieChartCard />
+  </div>
+);
+
+// --- Outras páginas (exemplo) ---
+const TransacoesPage = () => (
+  <div>
+    <h2 style={{color: 'white'}}>Página de Transações</h2>
+    <p style={{color: 'white'}}>Aqui você verá suas transações.</p>
+  </div>
+);
 
 export default function App() {
   const [activePage, setActivePage] = useState('Painel');
