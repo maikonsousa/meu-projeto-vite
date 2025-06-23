@@ -117,6 +117,27 @@ const PieChartCard = () => (
   </NeumorphicCard>
 );
 
+// --- Lista de Transações Recentes ---
+const initialTransactions = [
+  { id: 1, name: 'Internet', amount: 120, date: '2024-06-01' },
+  { id: 2, name: 'Água', amount: 78, date: '2024-06-02' },
+  { id: 3, name: 'Salário Ela', amount: 2800, date: '2024-06-03' },
+  { id: 4, name: 'Salário Ele', amount: 3200, date: '2024-06-04' },
+];
+
+const RecentTransactionsCard = () => (
+  <NeumorphicCard className="w-full mt-8">
+    <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>Transações Recentes</div>
+    <ul>
+      {initialTransactions.map(t => (
+        <li key={t.id} style={{color: '#222', marginBottom: 4}}>
+          <span style={{fontWeight: 'bold'}}>{t.name}</span> — R$ {t.amount} <span style={{fontSize: 12, color: '#666'}}>({t.date})</span>
+        </li>
+      ))}
+    </ul>
+  </NeumorphicCard>
+);
+
 // --- DashboardPage ---
 const DashboardPage = () => (
   <div>
@@ -131,6 +152,7 @@ const DashboardPage = () => (
     </div>
     <BarChartCard />
     <PieChartCard />
+    <RecentTransactionsCard />
   </div>
 );
 
