@@ -6,5 +6,5 @@ import { Home, BarChart2, Repeat, Target, Settings, Users, Sun, Moon, DollarSign
 
 // --- Componente Principal da App ---
 export default function App() {
-    // ... (restante do código do App do site.txt) ...
+  return <h1 style={{color: 'white'}}>Teste funcionando!</h1>;
 }
