@@ -69,7 +69,48 @@ const DashboardPage = () => (
     </div>
   </div>
 );
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
+// Dados mock para o gráfico
+const revenueVsExpensesData = [
+  { name: 'Jan', receitas: 3000, despesas: 2000 },
+  { name: 'Fev', receitas: 3200, despesas: 2100 },
+  { name: 'Mar', receitas: 2800, despesas: 2500 },
+  { name: 'Abr', receitas: 3500, despesas: 2200 },
+  { name: 'Mai', receitas: 4000, despesas: 3000 },
+  { name: 'Jun', receitas: 3700, despesas: 2700 },
+];
+
+const BarChartCard = () => (
+  <NeumorphicCard className="w-full mt-8">
+    <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>Receitas vs Despesas (Últimos 6 meses)</div>
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={revenueVsExpensesData}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="receitas" fill="#22c55e" name="Receitas" />
+        <Bar dataKey="despesas" fill="#ef4444" name="Despesas" />
+      </BarChart>
+    </ResponsiveContainer>
+  </NeumorphicCard>
+);
+
+const DashboardPage = () => (
+  <div>
+    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
+    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 32}}>
+      {summaryData.map((item, idx) => (
+        <NeumorphicCard key={idx} className="w-64">
+          <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>{item.title}</div>
+          <div style={{fontSize: 24, fontWeight: 'bold', color: '#111'}}>{item.value}</div>
+        </NeumorphicCard>
+      ))}
+    </div>
+    <BarChartCard />
+  </div>
+);
 // Adicione outros componentes de página conforme for evoluindo!
 
 export default function App() {
