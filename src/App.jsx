@@ -43,17 +43,30 @@ const Sidebar = ({ activePage, setActivePage }) => {
 };
 
 // --- Conteúdo de cada página ---
-const DashboardPage = () => (
-  <div>
-    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
-    <p style={{color: 'white'}}>Aqui você verá os gráficos e resumos financeiros.</p>
+const summaryData = [
+  { title: 'Saldo do Mês', value: 'R$ 2.500,00' },
+  { title: 'Receitas do Mês', value: 'R$ 6.000,00' },
+  { title: 'Despesas do Mês', value: 'R$ 3.500,00' },
+  { title: 'Despesas Fixas do Mês', value: 'R$ 1.200,00' },
+];
+
+const NeumorphicCard = ({ children, className = '' }) => (
+  <div className={`bg-[#e0e0e0] shadow-[8px_8px_16px_#bebebe,-8px_-8px_16px_#ffffff] p-6 rounded-2xl ${className}`}>
+    {children}
   </div>
 );
 
-const TransacoesPage = () => (
+const DashboardPage = () => (
   <div>
-    <h2 style={{color: 'white'}}>Página de Transações</h2>
-    <p style={{color: 'white'}}>Aqui você verá suas transações.</p>
+    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
+    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 32}}>
+      {summaryData.map((item, idx) => (
+        <NeumorphicCard key={idx} className="w-64">
+          <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>{item.title}</div>
+          <div style={{fontSize: 24, fontWeight: 'bold', color: '#111'}}>{item.value}</div>
+        </NeumorphicCard>
+      ))}
+    </div>
   </div>
 );
 
