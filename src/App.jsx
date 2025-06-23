@@ -141,8 +141,8 @@ const RecentTransactionsCard = () => (
 // --- DashboardPage ---
 const DashboardPage = () => (
   <div>
-    <h2 style={{color: 'white'}}>Bem-vindo ao Painel!</h2>
-    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 32}}>
+    <h2 style={{color: 'white', marginBottom: 24}}>Bem-vindo ao Painel!</h2>
+    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 32}}>
       {summaryData.map((item, idx) => (
         <NeumorphicCard key={idx} className="w-64">
           <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>{item.title}</div>
@@ -150,12 +150,17 @@ const DashboardPage = () => (
         </NeumorphicCard>
       ))}
     </div>
-    <BarChartCard />
-    <PieChartCard />
-    <RecentTransactionsCard />
+    <div style={{display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 32}}>
+      <div style={{flex: 2, minWidth: 350}}>
+        <BarChartCard />
+        <RecentTransactionsCard />
+      </div>
+      <div style={{flex: 1, minWidth: 350}}>
+        <PieChartCard />
+      </div>
+    </div>
   </div>
 );
-
 // --- Outras páginas (exemplo) ---
 const TransacoesPage = () => (
   <div>
