@@ -138,6 +138,36 @@ const RecentTransactionsCard = () => (
   </NeumorphicCard>
 );
 
+// --- Card de Progresso de Metas ---
+const initialGoals = [
+  { id: 1, name: 'Casa', targetAmount: 30000, currentAmount: 2000, deadline: '2025-12-31', status: 'Ativa', category: 'Casa' },
+  { id: 2, name: 'Fundo de Emergência', targetAmount: 15000, currentAmount: 15000, deadline: '2024-12-31', status: 'Concluída', category: 'Emergência' },
+];
+
+const GoalProgressCard = () => {
+  const goal = initialGoals[0]; // Mostra a primeira meta ativa
+  const progress = Math.min((goal.currentAmount / goal.targetAmount) * 100, 100);
+
+  return (
+    <NeumorphicCard className="w-full mt-8">
+      <div style={{fontWeight: 'bold', color: '#374151', marginBottom: 8}}>Progresso da Meta</div>
+      <div style={{fontWeight: 'bold', color: '#222'}}>{goal.name}</div>
+      <div style={{margin: '8px 0', color: '#666', fontSize: 14}}>
+        {goal.currentAmount} / {goal.targetAmount} ({progress.toFixed(1)}%)
+      </div>
+      <div style={{background: '#ddd', borderRadius: 8, height: 16, width: '100%', marginBottom: 8}}>
+        <div style={{
+          background: '#3b82f6',
+          width: `${progress}%`,
+          height: '100%',
+          borderRadius: 8
+        }} />
+      </div>
+      <div style={{fontSize: 12, color: '#666'}}>Até {goal.deadline}</div>
+    </NeumorphicCard>
+  );
+};
+
 // --- DashboardPage ---
 const DashboardPage = () => (
   <div>
@@ -157,10 +187,12 @@ const DashboardPage = () => (
       </div>
       <div style={{flex: 1, minWidth: 350}}>
         <PieChartCard />
+        <GoalProgressCard />
       </div>
     </div>
   </div>
 );
+
 // --- Outras páginas (exemplo) ---
 const TransacoesPage = () => (
   <div>
