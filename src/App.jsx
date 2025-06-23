@@ -3,32 +3,10 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieC
 import { Home, BarChart2, Repeat, Target, Settings, Users, Sun, Moon, DollarSign, ArrowUp, ArrowDown, Calendar, User, Briefcase, Plus, Search, Edit, Trash2, ChevronDown, Download, GripVertical, X, Save, ArrowUpRight, ArrowDownRight, Heart, CreditCard, ShieldCheck, Menu, AlertTriangle } from 'lucide-react';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // Aqui você pode colocar o seu código real do App
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>Seu App está pronto para receber o código real aqui!</div>
+  );
 }
 
-export default App
+export default App;
